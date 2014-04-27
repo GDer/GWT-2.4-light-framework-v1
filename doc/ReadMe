@@ -1,0 +1,92 @@
+gwt create external source 
+http://api.ning.com/files/l7Mw6L2RmciMi8YX7kl1KHMt5-pHjl8ihoYitZKEm8iBmajQqhUP99-xI8xsn2mWAK2*DMk52urOJHBooiNUJ-I2lN4Xe-4L/creatingexternaljar.pdf
+
+1. Client-BaseModelClient.ucls
+	
+2.
+
+1.
+	########################################################################################
+	# com.gw.lf.server.base implements com.gw.lf.server.base.BaseServer 				   #
+	########################################################################################
+	#																					   #
+	# BaseModelServer																	   #		
+	# 	+ ConsoleLog4jUtil consoleLog4jUtil												   #	
+	# 	+ EntryUtil entryUtil  															   #		
+	# 	+ SessionUtil sessionUtil           											   # 		
+	# 	+ BaseSessionObject baseSessionObject 											   #		
+	# 	+ HttpServletRequest getRequest 												   #			
+	#		    																		   #		
+	# 	+ abstract BaseObject serverModel(BaseObject baseObject)						   #		
+    # 	+ abstract BaseObject serverModule(BaseObject baseObject)						   #		
+    # 	+ abstract BaseObject setServerModule(BaseObject baseObject)                       #	
+    #																					   #	  					
+    # 	+ BaseObject server(BaseObject baseObject) 										   #	
+    #		1. init log4j.																   #		
+    #		2. set base session object										   			   #	
+    #		3. trace																       #			 
+    #		4. serverModel																   #			
+    #		5. setServerModule															   #		
+    #		6. serverModule 															   #		
+    #																					   #		  			
+    # 	+ BaseObject controller(BaseObject baseObject, BaseSessionObject baseSessionObject)#	 
+	#																					   #		
+	########################################################################################		
+				  		 																		
+																												  		 																			
+	########################################################################################   	
+	# com.gw.lf.server.base extends BaseModelServer	 									   #	
+	########################################################################################
+	#																					   #		
+	# BaseModuleLoginServer															       #	
+	# 	+ BaseObject serverModel(BaseObject baseObject) *** from BaseModelServer		   #
+	# 		1. double check login session 												   #	
+	#																				   	   #	
+	# BaseModuleServer															       	   #
+	# 	+ BaseObject serverModel(BaseObject baseObject) *** from BaseModelServer		   #
+	#																					   #	
+	# BaseModuleServerDevelopment													       #	
+	# 	+ BaseObject serverModel(BaseObject baseObject) *** from BaseModelServer		   #	
+	#																					   #
+	########################################################################################
+
+
+								############################
+								#						   #
+								# 	Framework connection   #
+								#						   #
+								############################
+
+
+	########################################################################################
+	# com.test.server.base extends com.gw.lf.server.base.BaseModuleLoginServer			   #
+	#						implements IsFriendService,									   #	 
+    #    								PersonalDetailsService,  						   #	
+	#						        	InsurancePlanService,							   #	
+	#						        	QuestionnaireService, 							   #	
+	#						        	SummaryAiaDetailService							   #
+	########################################################################################	
+	#																					   #
+	# TestBaseModuleLoginServer															   #	
+	#	+ com.test.server.base.BaseSessionObject sessionObject							   #	
+	# 	+ com.test.base.shared.SessionUtil sessionUt	 								   #	
+    #																					   #			
+	# 	+ BaseObject setServerModule(BaseObject baseObject) *** from BaseModelServer	   #
+	# 																					   #	
+	########################################################################################
+	
+
+	########################################################################################
+	# com.test.server.base extends TestBaseModuleServer									   #
+	########################################################################################	
+	#																					   #
+	# LoginServiceImpl																	   #	
+	# 	- LoginBean baseObject = new LoginBean();	 								   	   #	
+    #																					   #			
+	# 	+ BaseObject serverModule(BaseObject baseObject) 	   							   #
+	# 	 	1. return controller														   #	
+	#																					   #
+	########################################################################################	 
+	
+	
+	

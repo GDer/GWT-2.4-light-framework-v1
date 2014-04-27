@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='goog_lightframe_1_0'>
+<!-- 	<source path='shared'/>
+	<source path='util'/>
+	<source path='base'/>
+	<source path='bean'/> -->
+	<source path='base/shared'/>
+	<source path='client/base'/>
+	<source path='dao/base'/>
+	<source path='properties/base'/>
+	<source path='server/base'/>
+	<source path='server/session/bean'/>
+	<source path='shared'/>
+	<source path='util'/>
+</module>

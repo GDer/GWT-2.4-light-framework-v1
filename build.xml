@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="AIA_Eapp_Portal" default="" basedir=".">
+	<!-- Arguments to gwtc and devmode targets -->
+	<property name="gwt.args" value="" />
+	
+	<!-- Configure path to GWT SDK -->
+	<!--<property name="gwt.sdk" location="C:/Documents and Settings/low/Desktop/eclipse-jee-helios-SR2-win32/lib/gwt-2.4.0"/>-->
+	<property name="gwt.sdk" location="D:/eclipse-jee-helios-SR2-win32/gwt-2.4.0"/>
+	<property name="gwt.servlet" location="lib/gwt-2.4-servlet"/>
+	<property name="lib.dir" location="lib"/>
+	<property name="war.lib" location="war/WEB-INF/lib" />
+		  
+	<path id="project.class.path">
+	    <pathelement location="war/WEB-INF/classes"/>
+	    <pathelement location="${gwt.sdk}/gwt-user.jar"/>
+	    <fileset dir="${gwt.sdk}" includes="gwt-dev*.jar"/>
+	    <!-- Add any additional non-server libs (such as JUnit) -->
+	    <fileset dir="war/WEB-INF/lib" includes="**/*.jar"/>
+	</path>
+
+  	<target name="libs" description="Copy libs to WEB-INF/lib">	  	
+	  	<delete dir="war/WEB-INF/lib" failonerror="false"/>
+	  	<!--<mkdir dir="${war.lib}"/>
+	  	<copy todir="${war.lib}">
+	  		<fileset dir="${lib.dir}/jasperReport-3.7.4">
+	  	  		<include name="**/*.jar"/>
+	  	  	</fileset>
+		</copy>
+	  	
+	  	<mkdir dir="${war.lib}"/>
+	  	<copy todir="${war.lib}">
+	  		<fileset dir="${lib.dir}/junit-3.8">
+	  	  		<include name="**/*.jar"/>
+	  	  	</fileset>
+		</copy>
+		
+		<mkdir dir="${war.lib}"/>
+	  	<copy todir="${war.lib}">
+	  		<fileset dir="${lib.dir}/commons-email-1.2">
+	  	  		<include name="**/*.jar"/>
+	  	  	</fileset>
+		</copy>
+	  	
+	    <mkdir dir="${war.lib}"/>
+	    <copy todir="${war.lib}">
+	    	<fileset dir="${lib.dir}/hibernate-3.1">
+	    		<include name="**/*.jar"/>
+	    	</fileset>
+	    </copy>
+	    	
+	  	<mkdir dir="${war.lib}"/>
+	  	<copy todir="${war.lib}">
+	  		<fileset dir="${lib.dir}/mysql-5">
+	  	  		<include name="**/*.jar"/>
+	  	  	</fileset>
+		</copy>
+	  	-->
+	  	<mkdir dir="${war.lib}"/>
+	  	<copy todir="${war.lib}">
+	  		<fileset dir="${lib.dir}/log4j-1.2.14">
+	  	  		<include name="**/*.jar"/>
+	  	  	</fileset>
+		</copy>
+
+  		<copy todir="${war.lib}" file="${gwt.servlet}/gwt-servlet.jar"/>
+  		<copy todir="${war.lib}" file="${gwt.servlet}/gwt-servlet-deps.jar"/>
+  	</target>
+	
+  	<target name="javac" depends="libs" description="Compile java source to bytecode">
+		<mkdir dir="war/WEB-INF/classes"/>
+		<javac srcdir="src" includes="**" encoding="utf-8"
+		    destdir="war/WEB-INF/classes"
+		    source="1.6" target="1.6" nowarn="true"
+		    debug="true" debuglevel="lines,vars,source">
+		  <classpath refid="project.class.path"/>
+		</javac>
+		<copy todir="war/WEB-INF/classes">
+	  		<fileset dir="src" excludes="**/*.java"/>
+		</copy>
+  	</target>
+	
+	<target name="jar">
+		<mkdir dir="lib"/>
+	    <jar destfile="lib/gw-lf.jar" basedir="war/WEB-INF/classes">
+	    	
+		</jar>
+	</target>
+	
+	<!--
+	<target name="war" depends="buildwar,deploy"/>	 
+	<target name="buildwar">
+		<war basedir="war" destfile="eapp-console.war" webxml="war/WEB-INF/web.xml">
+			<exclude name="WEB-INF/**" />
+			<webinf dir="war/WEB-INF/">
+				<include name="**/*.jar" />
+			</webinf>
+		</war>
+	</target>
+	 -->
+	
+	<target name="deploy">
+		<copy file="eapp-console.war" todir="." />
+	</target> 
+	
+	
+	 <target name="gwtc" depends="javac" description="GWT compile to JavaScript (production mode)">
+	    <java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
+	      <classpath>
+	        <pathelement location="src"/>
+	        <path refid="project.class.path"/>
+	        <pathelement location="${gwt.sdk}/validation-api-1.0.0.GA.jar" />
+	        <pathelement location="${gwt.sdk}/validation-api-1.0.0.GA-sources.jar" />
+	      </classpath>
+	      <!-- add jvmarg -Xss16M or similar if you see a StackOverflowError -->
+	      <jvmarg value="-Xmx256M"/>
+	      <arg line="-war"/>
+	      <arg value="war"/>
+	      <!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
+	      <arg line="${gwt.args}"/>
+	      <arg value="com.test.Login"/>
+	    <!--
+	      <arg value="com.test.LoginRegistration"/>
+	      <arg value="com.test.PersonalDetails"/>
+	      <arg value="com.test.InsurancePlan"/>
+	      <arg value="com.test.Questionnaire"/>
+	      <arg value="com.test.SummaryAiaDetail"/>
+	      <arg value="com.test.Signature"/>
+	      <arg value="com.test.IsFriend"/>
+	      -->
+	    </java>
+	  </target>
+
+	  <target name="devmode" depends="javac" description="Run development mode">
+	    <java failonerror="true" fork="true" classname="com.google.gwt.dev.DevMode">
+	      <classpath>
+	        <pathelement location="src"/>
+	        <path refid="project.class.path"/>
+	        <pathelement location="C:/Documents and Settings/low/Desktop/eclipse-jee-helios-SR2-win32/lib/gwt-2.4.0/validation-api-1.0.0.GA.jar" />
+	        <pathelement location="C:/Documents and Settings/low/Desktop/eclipse-jee-helios-SR2-win32/lib/gwt-2.4.0/validation-api-1.0.0.GA-sources.jar" />
+	      </classpath>
+	      <jvmarg value="-Xmx256M"/>
+	      <arg value="-startupUrl"/>
+	      
+	      <arg value="LoginRegistration.html"/>
+	      <!-- <arg value="Login.html"/>
+	      <arg value="PersonalDetails.html"/>
+	      <arg value="InsurancePlan.html"/>
+	      <arg value="Questionnaire.html"/>
+	      <arg value="SummaryAiaDetail.html"/>
+	      <arg value="Signature.html"/>
+	      <arg value="IsFriend.html"/>
+	      -->	
+	      	
+	      <arg line="-war"/>
+	      <arg value="war"/>
+	      <!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
+	      <arg line="${gwt.args}"/>	      
+		  
+	      <arg value="com.test.LoginRegistration"/>
+	      <!--
+	      <arg value="com.test.Login"/>
+	      <arg value="com.test.PersonalDetails"/>
+	      <arg value="com.test.InsurancePlan"/>
+	      <arg value="com.test.Questionnaire"/>
+	      <arg value="com.test.SummaryAiaDetail"/>
+	      <arg value="com.test.Signature"/>
+	      <arg value="com.test.IsFriend"/>
+	      -->
+	    </java>
+	  </target>
+	
+	  <target name="build" depends="gwtc" description="Build this project" />
+
+	  <target name="war" depends="build" description="Create a war file">
+	    <zip destfile="eapp-console.war" basedir="war"/>
+	  </target>
+
+	  <target name="clean" description="Cleans this project">
+	    <delete dir="war/WEB-INF/classes" failonerror="false"/>
+	  	<delete dir="war/WEB-INF/deploy" failonerror="false"/>
+	  	<delete dir="war/WEB-INF/lib" failonerror="false"/>	  	
+	  </target>
+</project>
+
+
+<!--
+	webAppCreator -out Login com.test.client.Login
+-->

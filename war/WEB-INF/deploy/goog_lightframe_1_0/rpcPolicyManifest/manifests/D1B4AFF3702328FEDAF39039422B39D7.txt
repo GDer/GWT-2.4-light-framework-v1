@@ -1,0 +1,2 @@
+serviceClass: com.gw.lf.client.GreetingService
+path: 338CEC3E8E59007FA55135BD1F61BB63.gwt.rpc

@@ -1,0 +1,66 @@
+<class-diagram version="1.0.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="com.test.client.Login" project="AIA_Eapp_Portal" 
+    file="/AIA_Eapp_Portal/src/com/test/client/Login.java" binary="false">    
+    <position height="-1" width="-1" x="809" y="528"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="com.test.client.base.TestBaseModuleLogin" 
+    project="AIA_Eapp_Portal" file="/AIA_Eapp_Portal/src/com/test/client/base/TestBaseModuleLogin.java" binary="false">    
+    <position height="-1" width="-1" x="598" y="530"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="com.gw.lf.client.base.BaseModuleLogin" 
+    project="AIA_Eapp_Portal" file="/AIA_Eapp_Portal/lib/gwt-2.4-servlet/gw-lf.jar" binary="true">    
+    <position height="-1" width="-1" x="596" y="192"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="com.gw.lf.client.base.BaseModelClient" 
+    project="AIA_Eapp_Portal" file="/AIA_Eapp_Portal/lib/gwt-2.4-servlet/gw-lf.jar" binary="true">    
+    <position height="-1" width="-1" x="288" y="190"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="5" corner="BOTTOM_RIGHT" language="java" name="com.google.gwt.core.client.EntryPoint" 
+    project="AIA_Eapp_Portal" 
+    file="C:/Documents and Settings/low/Desktop/eclipse-jee-helios-SR2-win32/lib/gwt-2.4.0/gwt-user.jar" binary="true">    
+    <position height="86" width="128" x="17" y="148"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <generalization id="6">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="7">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <realization id="8">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <generalization id="9">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
